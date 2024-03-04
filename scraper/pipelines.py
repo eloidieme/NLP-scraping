@@ -6,8 +6,10 @@
 
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
+import uuid
 
-
-class JobNlpPipeline:
+class UniqueIDPipeline:
     def process_item(self, item, spider):
+        if spider.name == 'board':
+            item['unique_id'] = str(uuid.uuid4())
         return item
